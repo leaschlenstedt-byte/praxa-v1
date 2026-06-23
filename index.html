@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAXA Skills — KI-Gesprächstraining für Ihr Team</title>
+<meta name="description" content="PRAXA Skills gibt Ihrem Team einen Raum zum Üben — bevor es zählt. KI-Gesprächspartner für reale Berufssituationen. EU-gehostet, DSGVO-konform.">
+<meta property="og:title" content="PRAXA Skills — KI-Gesprächstraining für Ihr Team">
+<meta property="og:description" content="Ein KI-Gesprächspartner, trainiert auf Ihren eigenen Richtlinien, simuliert reale Berufssituationen. Demo buchen — 30 Minuten, kostenlos.">
+<meta property="og:image" content="https://praxa.de/og-image.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231a1814'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='19' font-weight='700' fill='%23f7f4ef' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --off-white: #f7f4ef;
+  --ink: #1a1814;
+  --mid: #6b6457;
+  --light: #c8bfb0;
+  --rule: rgba(26,24,20,0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--off-white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  padding: 24px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--rule);
+}
+.logo {
+  font-size: 13px; font-weight: 500; letter-spacing: 2px;
+  text-transform: uppercase; text-decoration: none; color: var(--ink);
+}
+.nav-r { display: flex; gap: 20px; align-items: center; }
+.lang {
+  font-size: 11px; letter-spacing: 1px; color: var(--mid);
+  background: none; border: none; cursor: pointer;
+  text-transform: uppercase; font-family: inherit;
+  transition: color 0.2s;
+}
+.lang:hover { color: var(--ink); }
+.demo-link {
+  font-size: 13px; font-weight: 500; color: var(--ink);
+  text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+  transition: opacity 0.2s;
+}
+.demo-link:hover { opacity: 0.6; }
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 48px;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-q {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(36px, 5.5vw, 80px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -1px;
+  color: var(--ink);
+  max-width: 900px;
+  margin-bottom: 56px;
+}
+.hero-q em { font-style: italic; }
+
+.hero-answer {
+  display: flex; align-items: flex-start; gap: 48px;
+  padding-top: 40px; border-top: 1px solid var(--rule);
+  max-width: 900px;
+}
+.hero-answer-text {
+  font-size: 16px; color: var(--mid); line-height: 1.8; font-weight: 300;
+  max-width: 440px; flex: 1;
+}
+.hero-answer-text strong { color: var(--ink); font-weight: 500; }
+.hero-cta-col { flex-shrink: 0; display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
+.cta-main {
+  display: inline-block;
+  background: var(--ink); color: var(--off-white);
+  font-size: 14px; font-weight: 500;
+  padding: 15px 32px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s;
+}
+.cta-main:hover { opacity: 0.8; }
+.cta-note { font-size: 12px; color: var(--light); text-align: center; }
+
+/* SCROLL INDICATOR */
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 48px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--light); display: flex; align-items: center; gap: 12px;
+  cursor: pointer; background: none; border: none; padding: 0;
+  font-family: inherit; transition: color 0.2s;
+}
+.scroll-hint:hover { color: var(--mid); }
+.scroll-hint::before { content: ''; width: 40px; height: 1px; background: currentColor; display: block; }
+
+/* PRICING */
+.pricing {
+  padding: 120px 48px;
+  max-width: 1000px; margin: 0 auto;
+}
+.pr-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 60px; font-weight: 400;
+}
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--rule); }
+.plan {
+  padding: 48px 36px; border-right: 1px solid var(--rule);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.plan:last-child { border-right: none; }
+.plan.mid { background: var(--ink); color: var(--off-white); }
+.plan-name {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 26px; font-weight: 400; letter-spacing: -0.3px;
+  margin-bottom: 8px;
+}
+.plan.mid .plan-name { color: var(--off-white); }
+.plan-who { font-size: 13px; color: var(--mid); margin-bottom: 40px; line-height: 1.5; }
+.plan.mid .plan-who { color: rgba(247,244,239,0.5); }
+.plan-price { font-size: 13px; color: var(--mid); margin-bottom: 40px; }
+.plan.mid .plan-price { color: rgba(247,244,239,0.5); }
+.plan-items { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+.plan-items li { font-size: 13px; color: var(--mid); padding-left: 16px; position: relative; line-height: 1.5; }
+.plan-items li::before { content: '·'; position: absolute; left: 0; color: var(--light); }
+.plan.mid .plan-items li { color: rgba(247,244,239,0.65); }
+.plan.mid .plan-items li::before { color: rgba(247,244,239,0.3); }
+.plan-btn {
+  display: block; text-align: center; padding: 12px;
+  font-size: 13px; font-weight: 500; text-decoration: none;
+  border: 1px solid var(--rule); color: var(--ink);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.plan-btn:hover { background: var(--ink); color: var(--off-white); border-color: var(--ink); }
+.plan.mid .plan-btn { border-color: rgba(247,244,239,0.2); color: var(--off-white); }
+.plan.mid .plan-btn:hover { background: rgba(247,244,239,0.1); }
+
+/* Hover elevation — only on pointer devices */
+@media (hover: hover) {
+  .plan:hover {
+    box-shadow: 0 8px 32px rgba(26,24,20,0.10);
+    transform: translateY(-2px);
+    position: relative; z-index: 1;
+  }
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+footer a { font-size: 12px; color: var(--light); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--mid); }
+.fc { font-size: 11px; color: var(--light); }
+
+/* TABLET */
+@media (max-width: 768px) {
+  nav, .hero, footer { padding-left: 24px; padding-right: 24px; }
+  .pricing { padding: 80px 24px; }
+  .hero-answer { flex-direction: column; gap: 32px; }
+  .plans { grid-template-columns: 1fr; }
+  .plan { border-right: none; border-bottom: 1px solid var(--rule); }
+  .plan:last-child { border-bottom: none; }
+}
+
+/* MOBILE — iPhone 14 (390px) */
+@media (max-width: 430px) {
+  nav { padding: 16px 20px; }
+  .logo { font-size: 12px; }
+  .hero { padding: 0 20px; }
+  .hero-q { margin-bottom: 40px; letter-spacing: -0.5px; }
+  .hero-answer { gap: 24px; padding-top: 28px; }
+  .hero-answer-text { font-size: 15px; }
+  .cta-main { width: 100%; text-align: center; padding: 14px 24px; }
+  .cta-note { text-align: left; }
+  .scroll-hint { left: 20px; bottom: 28px; }
+  .pricing { padding: 64px 20px; }
+  .pr-label { margin-bottom: 40px; }
+  .plan { padding: 36px 24px; }
+  footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">PRAXA Skills</a>
+  <div class="nav-r">
+    <button class="lang" id="lang-btn" onclick="toggleLang()">DE / EN</button>
+    <a href="mailto:hello@praxa.de" class="demo-link" id="nav-demo">Demo buchen</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-q" id="hero-q">
+    Haben Sie das letzte<br>
+    <em>schwierige Gespräch</em><br>
+    gut geführt?
+  </h1>
+  <div class="hero-answer">
+    <p class="hero-answer-text" id="hero-ans">
+      PRAXA Skills gibt Ihrem Team einen Raum zum Üben — bevor es zählt. Ein KI-Gesprächspartner, trainiert auf <strong>Ihren eigenen Richtlinien</strong>, simuliert reale Berufssituationen. Strukturiertes Feedback nach jeder Einheit. Keine Konsequenzen beim Lernen.
+    </p>
+    <div class="hero-cta-col">
+      <a href="mailto:hello@praxa.de" class="cta-main" id="cta1">Demo buchen →</a>
+      <span class="cta-note" id="cta-note">30 Minuten · Kostenlos</span>
+    </div>
+  </div>
+  <button class="scroll-hint" id="scroll-hint" aria-label="Zu den Preisen scrollen">Preise</button>
+</section>
+
+<section class="pricing" id="pricing">
+  <h2 class="pr-label" id="pr-label">Preise · Alle Pakete EU-gehostet, DSGVO-konform</h2>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name" id="pn1">Starter</div>
+      <div class="plan-who" id="pw1">Kleine Teams bis 25 Lernende</div>
+      <div class="plan-price" id="pp1">Preis auf Anfrage</div>
+      <ul class="plan-items">
+        <li id="pi1-1">200+ Szenarien</li>
+        <li id="pi1-2">Sprach- &amp; Textübungen</li>
+        <li id="pi1-3">Personalisiertes Feedback</li>
+        <li id="pi1-4">Manager-Dashboard</li>
+      </ul>
+      <a href="mailto:hello@praxa.de" class="plan-btn" id="pb1">Anfragen</a>
+    </div>
+    <div class="plan mid">
+      <div class="plan-name" id="pn2">Professional</div>
+      <div class="plan-who" id="pw2">L&amp;D-Teams bis 250 Lernende</div>
+      <div class="plan-price" id="pp2">Preis auf Anfrage</div>
+      <ul class="plan-items">
+        <li id="pi2-1">Alles aus Starter</li>
+        <li id="pi2-2">Eigene Richtlinien hochladen</li>
+        <li id="pi2-3">Team-Reporting</li>
+        <li id="pi2-4">LMS-Integration</li>
+      </ul>
+      <a href="mailto:hello@praxa.de" class="plan-btn" id="pb2">Anfragen</a>
+    </div>
+    <div class="plan">
+      <div class="plan-name" id="pn3">Enterprise</div>
+      <div class="plan-who" id="pw3">Große Organisationen &amp; Verbände</div>
+      <div class="plan-price" id="pp3">Individuell</div>
+      <ul class="plan-items">
+        <li id="pi3-1">Alles aus Professional</li>
+        <li id="pi3-2">White-Label</li>
+        <li id="pi3-3">API-Zugang</li>
+        <li id="pi3-4">SLA &amp; dedizierter Support</li>
+      </ul>
+      <a href="mailto:hello@praxa.de" class="plan-btn" id="pb3">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;gap:24px;flex-wrap:wrap">
+    <a href="#" id="fl1">Datenschutz</a>
+    <a href="#" id="fl2">Impressum</a>
+    <a href="mailto:hello@praxa.de">hello@praxa.de</a>
+  </div>
+  <span class="fc" id="fc">© 2026 PRAXA Skills · Made in Bavaria · EU AI Act Art. 6 konform</span>
+</footer>
+
+<script>
+const T = {
+  de: {
+    'nav-demo': 'Demo buchen',
+    'hero-q': 'Haben Sie das letzte<br><em>schwierige Gespräch</em><br>gut geführt?',
+    'hero-ans': 'PRAXA Skills gibt Ihrem Team einen Raum zum Üben — bevor es zählt. Ein KI-Gesprächspartner, trainiert auf <strong>Ihren eigenen Richtlinien</strong>, simuliert reale Berufssituationen. Strukturiertes Feedback nach jeder Einheit. Keine Konsequenzen beim Lernen.',
+    'cta1': 'Demo buchen →', 'cta-note': '30 Minuten · Kostenlos',
+    'scroll-hint': 'Preise',
+    'pr-label': 'Preise · Alle Pakete EU-gehostet, DSGVO-konform',
+    'pn1': 'Starter', 'pw1': 'Kleine Teams bis 25 Lernende', 'pp1': 'Preis auf Anfrage',
+    'pi1-1': '200+ Szenarien', 'pi1-2': 'Sprach- &amp; Textübungen', 'pi1-3': 'Personalisiertes Feedback', 'pi1-4': 'Manager-Dashboard', 'pb1': 'Anfragen',
+    'pn2': 'Professional', 'pw2': 'L&amp;D-Teams bis 250 Lernende', 'pp2': 'Preis auf Anfrage',
+    'pi2-1': 'Alles aus Starter', 'pi2-2': 'Eigene Richtlinien hochladen', 'pi2-3': 'Team-Reporting', 'pi2-4': 'LMS-Integration', 'pb2': 'Anfragen',
+    'pn3': 'Enterprise', 'pw3': 'Große Organisationen &amp; Verbände', 'pp3': 'Individuell',
+    'pi3-1': 'Alles aus Professional', 'pi3-2': 'White-Label', 'pi3-3': 'API-Zugang', 'pi3-4': 'SLA &amp; dedizierter Support', 'pb3': 'Kontakt',
+    'fl1': 'Datenschutz', 'fl2': 'Impressum', 'fc': '© 2026 PRAXA Skills · Made in Bavaria · EU AI Act Art. 6 konform',
+  },
+  en: {
+    'nav-demo': 'Book demo',
+    'hero-q': 'Did you handle the last<br><em>difficult conversation</em><br>well?',
+    'hero-ans': 'PRAXA Skills gives your team a space to practice — before it counts. An AI partner, trained on <strong>your own policies</strong>, simulates real professional situations. Structured feedback after every session. No consequences while learning.',
+    'cta1': 'Book demo →', 'cta-note': '30 minutes · Free',
+    'scroll-hint': 'Pricing',
+    'pr-label': 'Pricing · All plans EU-hosted, GDPR-compliant',
+    'pn1': 'Starter', 'pw1': 'Small teams up to 25 learners', 'pp1': 'Price on request',
+    'pi1-1': '200+ scenarios', 'pi1-2': 'Voice &amp; text practice', 'pi1-3': 'Personalized feedback', 'pi1-4': 'Manager dashboard', 'pb1': 'Request',
+    'pn2': 'Professional', 'pw2': 'L&amp;D teams up to 250 learners', 'pp2': 'Price on request',
+    'pi2-1': 'Everything in Starter', 'pi2-2': 'Upload custom policies', 'pi2-3': 'Team reporting', 'pi2-4': 'LMS integration', 'pb2': 'Request',
+    'pn3': 'Enterprise', 'pw3': 'Large organizations &amp; associations', 'pp3': 'Custom',
+    'pi3-1': 'Everything in Professional', 'pi3-2': 'White-label', 'pi3-3': 'API access', 'pi3-4': 'SLA &amp; dedicated support', 'pb3': 'Contact',
+    'fl1': 'Privacy', 'fl2': 'Imprint', 'fc': '© 2026 PRAXA Skills · Made in Bavaria · EU AI Act Art. 6 compliant',
+  }
+};
+
+let lang = localStorage.getItem('praxa-lang') || 'de';
+
+function applyLang(l) {
+  document.documentElement.lang = l;
+  Object.keys(T[l]).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = T[l][id];
+  });
+  document.getElementById('lang-btn').textContent = l === 'de' ? 'DE / EN' : 'EN / DE';
+  document.getElementById('scroll-hint').setAttribute('aria-label',
+    l === 'de' ? 'Zu den Preisen scrollen' : 'Scroll to pricing');
+}
+
+function toggleLang() {
+  lang = lang === 'de' ? 'en' : 'de';
+  localStorage.setItem('praxa-lang', lang);
+  applyLang(lang);
+}
+
+document.getElementById('scroll-hint').addEventListener('click', () => {
+  document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+});
+
+if (lang !== 'de') applyLang(lang);
+</script>
+</body>
+</html>
