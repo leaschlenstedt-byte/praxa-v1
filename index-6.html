@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRAXA Skills — KI-Gesprächstraining für Führungskräfte</title>
+<meta name="description" content="PRAXA Skills gibt Führungskräften und L&D-Teams einen KI-Gesprächspartner für schwierige Berufssituationen — trainiert auf Ihren eigenen Richtlinien. EU-gehostet, DSGVO-konform.">
+<meta property="og:title" content="PRAXA Skills — KI-Gesprächstraining für Führungskräfte">
+<meta property="og:description" content="Üben Sie das schwierige Gespräch, bevor es zählt. 200+ Szenarien, personalisiertes Feedback, EU-gehostet.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://praxa.de/og-image.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563EB'/%3E%3Ctext x='16' y='23' font-family='system-ui,sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#fff;
+  --bg-alt:#F8FAFC;
+  --bg-dark:#0F172A;
+  --ink:#0F172A;
+  --ink-2:#475569;
+  --ink-3:#94A3B8;
+  --blue:#2563EB;
+  --blue-dark:#1D4ED8;
+  --blue-bg:#EFF6FF;
+  --border:#E2E8F0;
+  --r:12px;
+  --r-sm:8px;
+  --shadow:0 1px 3px rgba(15,23,42,.08),0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 4px 16px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.04);
+  --shadow-lg:0 20px 48px rgba(15,23,42,.14);
+  --nav-h:68px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;line-height:1.6;
+}
+
+.container{max-width:1120px;margin:0 auto;padding:0 32px}
+
+/* ── BUTTONS ── */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:inherit;font-size:15px;font-weight:600;
+  padding:11px 22px;border-radius:var(--r-sm);
+  text-decoration:none;cursor:pointer;border:none;
+  transition:all .15s ease;line-height:1;
+}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 14px rgba(37,99,235,.35)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink-3);background:var(--bg-alt)}
+.btn-lg{padding:14px 28px;font-size:16px}
+.btn-white{background:#fff;color:var(--ink)}
+.btn-white:hover{background:#F1F5F9}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--nav-h);background:rgba(255,255,255,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s;
+}
+nav.scrolled{border-color:var(--border);box-shadow:var(--shadow)}
+.nav-inner{
+  height:100%;display:flex;align-items:center;justify-content:space-between;
+  max-width:1120px;margin:0 auto;padding:0 32px;
+}
+.nav-logo{
+  font-size:20px;font-weight:800;color:var(--ink);text-decoration:none;
+  letter-spacing:-.03em;flex-shrink:0;
+}
+.nav-logo em{color:var(--blue);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{
+  font-size:14px;font-weight:500;color:var(--ink-2);
+  text-decoration:none;transition:color .15s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-lang{
+  font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.08em;
+  text-transform:uppercase;background:none;border:none;cursor:pointer;
+  font-family:inherit;transition:color .15s;padding:0 4px;
+}
+.nav-lang:hover{color:var(--ink)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .2s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{
+  display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:#fff;border-bottom:1px solid var(--border);padding:16px 32px 24px;
+  box-shadow:var(--shadow-md);z-index:99;
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{
+  display:block;padding:12px 0;font-size:16px;font-weight:500;
+  color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--border);
+}
+.mobile-menu a:last-of-type{border-bottom:none}
+.mobile-menu .btn{margin-top:16px;width:100%;justify-content:center}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding:calc(var(--nav-h) + 72px) 0 80px;
+  display:flex;align-items:center;
+}
+.hero-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+}
+.hero-eyebrow{margin-bottom:24px}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--blue-bg);color:var(--blue);
+  font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px;
+  border:1px solid rgba(37,99,235,.18);
+}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
+h1{
+  font-size:clamp(38px,4.5vw,62px);font-weight:800;
+  line-height:1.1;letter-spacing:-.03em;color:var(--ink);margin-bottom:22px;
+}
+h1 em{color:var(--blue);font-style:normal}
+.hero-desc{
+  font-size:18px;color:var(--ink-2);line-height:1.72;
+  margin-bottom:36px;max-width:460px;
+}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:18px}
+.trust-item{
+  display:flex;align-items:center;gap:7px;
+  font-size:13px;color:var(--ink-2);font-weight:500;
+}
+.trust-item svg{color:var(--blue);flex-shrink:0}
+
+/* ── HERO MOCKUP ── */
+.mockup{
+  background:var(--bg-alt);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);
+}
+.mockup-bar{
+  background:var(--bg);border-bottom:1px solid var(--border);
+  padding:11px 16px;display:flex;align-items:center;gap:10px;
+}
+.mock-dots{display:flex;gap:5px}
+.mock-dots i{display:block;width:11px;height:11px;border-radius:50%}
+.mock-dots i:nth-child(1){background:#FF5F57}
+.mock-dots i:nth-child(2){background:#FFBD2E}
+.mock-dots i:nth-child(3){background:#28CA41}
+.mock-url{
+  flex:1;background:var(--bg-alt);border-radius:6px;padding:4px 12px;
+  font-size:11.5px;color:var(--ink-3);font-weight:500;text-align:center;
+}
+.mockup-body{padding:18px}
+.mock-scenario{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--blue-bg);border:1px solid rgba(37,99,235,.15);
+  border-radius:var(--r-sm);padding:8px 14px;margin-bottom:16px;
+}
+.mock-scenario span{font-size:12px;color:var(--ink-3);font-weight:500}
+.mock-scenario strong{font-size:12px;color:var(--blue);font-weight:600}
+.mock-level{font-size:11px;background:rgba(37,99,235,.1);color:var(--blue);padding:2px 8px;border-radius:100px;font-weight:600}
+.mock-chat{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.mock-msg{display:flex;gap:9px;align-items:flex-end}
+.mock-msg.ai{flex-direction:row}
+.mock-msg.me{flex-direction:row-reverse}
+.mock-av{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;line-height:1;
+}
+.mock-msg.ai .mock-av{background:#E2E8F0;color:var(--ink-2)}
+.mock-msg.me .mock-av{background:var(--blue);color:#fff}
+.mock-bubble{
+  max-width:76%;padding:9px 13px;border-radius:11px;
+  font-size:12.5px;line-height:1.5;
+}
+.mock-msg.ai .mock-bubble{background:#fff;border:1px solid var(--border);color:var(--ink);border-bottom-left-radius:3px}
+.mock-msg.me .mock-bubble{background:var(--blue);color:#fff;border-bottom-right-radius:3px}
+.mock-feedback{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.mock-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px}
+.mock-tag.good{background:#DCFCE7;color:#15803D}
+.mock-tag.warn{background:#FEF9C3;color:#A16207}
+.mock-input{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--r-sm);
+  padding:9px 12px;display:flex;align-items:center;gap:9px;
+}
+.mock-input-ph{flex:1;font-size:12px;color:var(--ink-3)}
+.mock-send{
+  width:26px;height:26px;background:var(--blue);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+/* ── LOGOS ── */
+.logos{
+  padding:44px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.logos-label{
+  text-align:center;font-size:12.5px;color:var(--ink-3);font-weight:500;
+  text-transform:uppercase;letter-spacing:.07em;margin-bottom:28px;
+}
+.logos-row{
+  display:flex;align-items:center;justify-content:center;
+  gap:40px;flex-wrap:wrap;
+}
+.logo-item{
+  font-size:14px;font-weight:700;color:#CBD5E1;
+  text-transform:uppercase;letter-spacing:.08em;
+  user-select:none;
+}
+
+/* ── STATS ── */
+.stats{padding:72px 0;background:var(--bg-alt)}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border);border-radius:var(--r);overflow:hidden;
+  background:var(--border);gap:1px;
+}
+.stat{background:var(--bg);padding:36px 28px;text-align:center}
+.stat-n{
+  font-size:48px;font-weight:800;letter-spacing:-.03em;
+  line-height:1;margin-bottom:6px;color:var(--ink);
+}
+.stat-n b{color:var(--blue)}
+.stat-l{font-size:13.5px;color:var(--ink-2);font-weight:500}
+
+/* ── SECTION HEADER ── */
+.section-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;color:var(--blue);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;
+}
+.section-label::before{content:'';width:18px;height:2px;background:var(--blue);display:block}
+h2{
+  font-size:clamp(28px,3.5vw,44px);font-weight:800;
+  line-height:1.13;letter-spacing:-.025em;margin-bottom:14px;
+}
+.section-sub{font-size:17px;color:var(--ink-2);line-height:1.7;max-width:520px}
+.section-head-center{text-align:center}
+.section-head-center .section-sub{margin:0 auto}
+
+/* ── PROBLEM ── */
+.problem{padding:96px 0}
+.problem-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;
+}
+.problem-card{
+  background:var(--bg-alt);border:1px solid var(--border);
+  border-radius:var(--r);padding:32px 28px;
+}
+.problem-card-icon{
+  font-size:26px;margin-bottom:16px;
+  width:48px;height:48px;background:var(--border);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+}
+.problem-card h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.problem-card p{font-size:14px;color:var(--ink-2);line-height:1.7}
+
+/* ── HOW ── */
+.how{padding:96px 0;background:var(--bg-alt)}
+.how-steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;
+}
+.how-step{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--r);padding:32px 28px;position:relative;
+}
+.how-step::after{
+  content:'→';position:absolute;right:-16px;top:50%;transform:translateY(-50%);
+  font-size:20px;color:var(--border);z-index:1;display:block;
+}
+.how-step:last-child::after{display:none}
+.step-num{
+  width:36px;height:36px;background:var(--blue-bg);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:var(--blue);margin-bottom:16px;
+}
+.how-step h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.how-step p{font-size:14px;color:var(--ink-2);line-height:1.65}
+
+/* ── FEATURES ── */
+.features{padding:96px 0}
+.features-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px;
+}
+.feature-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--r);padding:32px 28px;
+  transition:box-shadow .2s,transform .2s;
+}
+.feature-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.feature-icon{
+  width:48px;height:48px;background:var(--blue-bg);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+}
+.feature-card h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em}
+.feature-card p{font-size:14px;color:var(--ink-2);line-height:1.7}
+.feature-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none}
+
+/* ── TESTIMONIALS ── */
+.testimonials{padding:96px 0;background:var(--bg-alt)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px}
+.testimonial{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:32px}
+.stars{color:#F59E0B;font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.t-quote{font-size:16px;line-height:1.72;color:var(--ink);margin-bottom:22px}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-av{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-bg),var(--border));
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;color:var(--blue);flex-shrink:0;
+}
+.t-name{font-size:14px;font-weight:700;margin-bottom:1px}
+.t-role{font-size:12.5px;color:var(--ink-2)}
+
+/* ── PRICING ── */
+.pricing{padding:96px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.plan{
+  background:var(--bg);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:32px;position:relative;
+  transition:box-shadow .2s;
+}
+.plan:hover{box-shadow:var(--shadow-md)}
+.plan.featured{border-color:var(--blue);background:var(--bg-dark);color:#fff}
+.plan-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;
+  font-size:10.5px;font-weight:700;padding:3px 14px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;
+}
+.plan-name{font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.plan.featured .plan-name{color:#fff}
+.plan-for{font-size:13px;color:var(--ink-2);margin-bottom:24px;line-height:1.5}
+.plan.featured .plan-for{color:rgba(255,255,255,.5)}
+.plan-price{
+  font-size:13px;font-weight:600;color:var(--ink-3);
+  padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--border);
+}
+.plan.featured .plan-price{color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.1)}
+.plan-items{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.plan-items li{
+  font-size:13.5px;color:var(--ink-2);padding-left:20px;position:relative;line-height:1.5;
+}
+.plan-items li::before{
+  content:'✓';position:absolute;left:0;color:var(--blue);font-weight:700;font-size:12px;
+}
+.plan.featured .plan-items li{color:rgba(255,255,255,.65)}
+.plan.featured .plan-items li::before{color:rgba(255,255,255,.6)}
+.plan-btn{
+  display:block;text-align:center;padding:12px;border-radius:var(--r-sm);
+  font-size:14px;font-weight:600;text-decoration:none;
+  border:1.5px solid var(--border);color:var(--ink);transition:all .15s;
+}
+.plan-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.plan.featured .plan-btn{background:#fff;color:var(--ink);border-color:transparent}
+.plan.featured .plan-btn:hover{background:#F1F5F9}
+
+/* ── FAQ ── */
+.faq{padding:96px 0;background:var(--bg-alt)}
+.faq-list{margin-top:56px;max-width:740px;margin-left:auto;margin-right:auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  width:100%;background:none;border:none;padding:20px 0;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  font-size:16px;font-weight:600;color:var(--ink);
+  cursor:pointer;font-family:inherit;text-align:left;transition:color .15s;
+}
+.faq-q:hover{color:var(--blue)}
+.faq-icon{
+  width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:18px;font-weight:400;color:var(--ink-3);
+  transition:all .2s;line-height:1;
+}
+.faq-item.open .faq-icon{background:var(--blue);border-color:var(--blue);color:#fff;transform:rotate(45deg)}
+.faq-a{
+  font-size:14.5px;color:var(--ink-2);line-height:1.72;
+  padding:0 0 20px;display:none;max-width:680px;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ── CTA SECTION ── */
+.cta-section{
+  padding:96px 0;background:var(--bg-dark);text-align:center;
+}
+.cta-section h2{color:#fff;margin-bottom:14px}
+.cta-section p{font-size:18px;color:rgba(255,255,255,.55);margin-bottom:36px}
+.cta-section .btn-primary{font-size:16px;padding:15px 32px}
+
+/* ── FOOTER ── */
+footer{background:var(--bg-alt);border-top:1px solid var(--border);padding:64px 0 28px}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;
+}
+.footer-brand .nav-logo{display:block;margin-bottom:12px}
+.footer-brand p{font-size:14px;color:var(--ink-2);line-height:1.7;max-width:260px}
+.footer-col h4{
+  font-size:12px;font-weight:700;color:var(--ink);margin-bottom:16px;
+  text-transform:uppercase;letter-spacing:.07em;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col a{font-size:14px;color:var(--ink-2);text-decoration:none;transition:color .15s}
+.footer-col a:hover{color:var(--ink)}
+.footer-bottom{
+  border-top:1px solid var(--border);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-copy{font-size:12.5px;color:var(--ink-3)}
+.footer-badges{display:flex;gap:8px;flex-wrap:wrap}
+.footer-badge{
+  font-size:11px;font-weight:600;color:var(--ink-3);
+  border:1px solid var(--border);padding:3px 10px;border-radius:100px;
+}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .how-step::after{display:none}
+}
+@media(max-width:900px){
+  .pricing-grid{grid-template-columns:1fr}
+  .plan.featured{order:-1}
+}
+@media(max-width:768px){
+  .container{padding:0 20px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;gap:48px;padding-top:0}
+  .hero-desc{max-width:100%}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .problem-cards{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+  .faq-list{margin-top:40px}
+}
+@media(max-width:480px){
+  .hero-ctas{flex-direction:column}
+  .hero-ctas .btn{justify-content:center}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .logos-row{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">PRAXA<em>.</em></a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#how">So funktioniert's</a>
+      <a href="#features">Funktionen</a>
+      <a href="#pricing">Preise</a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-lang" id="lang-btn" onclick="toggleLang()">EN</button>
+      <a href="mailto:hello@praxa.de" class="btn btn-ghost" style="padding:9px 18px;font-size:14px">Anmelden</a>
+      <a href="mailto:hello@praxa.de" class="btn btn-primary" style="padding:9px 18px;font-size:14px" id="nav-cta">Demo buchen</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#problem" onclick="toggleMenu()">Problem</a>
+  <a href="#how" onclick="toggleMenu()">So funktioniert's</a>
+  <a href="#features" onclick="toggleMenu()">Funktionen</a>
+  <a href="#pricing" onclick="toggleMenu()">Preise</a>
+  <a href="mailto:hello@praxa.de" class="btn btn-primary" id="mobile-cta">Demo buchen →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <span class="badge"><span class="badge-dot"></span><span id="badge-text">KI-Gesprächstraining · EU-gehostet · DSGVO-konform</span></span>
+        </div>
+        <h1 id="hero-h1">Üben Sie das schwierige Gespräch — <em>bevor es zählt.</em></h1>
+        <p class="hero-desc" id="hero-p">PRAXA Skills gibt Führungskräften und L&amp;D-Teams einen KI-Gesprächspartner, der auf Ihren eigenen Unternehmensrichtlinien trainiert wurde. Reale Szenarien. Strukturiertes Feedback. Keine Konsequenzen beim Lernen.</p>
+        <div class="hero-ctas">
+          <a href="mailto:hello@praxa.de" class="btn btn-primary btn-lg" id="hero-cta1">Kostenlose Demo buchen →</a>
+          <a href="#how" class="btn btn-ghost btn-lg" id="hero-cta2">Wie es funktioniert</a>
+        </div>
+        <div class="hero-trust">
+          <span class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="t1">30 Min · Kostenlos</span>
+          </span>
+          <span class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="t2">Kein Commitment</span>
+          </span>
+          <span class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity=".3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="t3">Sofort startklar</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Product mockup -->
+      <div class="mockup reveal">
+        <div class="mockup-bar">
+          <div class="mock-dots"><i></i><i></i><i></i></div>
+          <div class="mock-url">praxa.de/übung · Gehaltsverhandlung</div>
+        </div>
+        <div class="mockup-body">
+          <div class="mock-scenario">
+            <div><span>Szenario&ensp;</span><strong>Gehaltsverhandlung</strong></div>
+            <span class="mock-level">Mittel</span>
+          </div>
+          <div class="mock-chat">
+            <div class="mock-msg ai">
+              <div class="mock-av">KI</div>
+              <div class="mock-bubble">Ich bin seit drei Jahren im Unternehmen und habe das Alpha-Projekt alleine gerettet. Ich erwarte jetzt eine deutliche Gehaltserhöhung.</div>
+            </div>
+            <div class="mock-msg me">
+              <div class="mock-bubble">Ihre Leistung auf Alpha war beeindruckend — das teile ich zu 100 %. Lassen Sie mich kurz erklären, wie wir Gehaltsanpassungen bei uns strukturieren.</div>
+              <div class="mock-av">Sie</div>
+            </div>
+            <div class="mock-msg ai">
+              <div class="mock-av">KI</div>
+              <div class="mock-bubble">Strukturieren? Ich brauche eine Zahl, keine Erklärung.</div>
+            </div>
+          </div>
+          <div class="mock-feedback">
+            <span class="mock-tag good">✓ Wertschätzung gezeigt</span>
+            <span class="mock-tag warn">→ Konkrete Zahl noch offen</span>
+          </div>
+          <div class="mock-input">
+            <span class="mock-input-ph">Ihre Antwort eingeben oder sprechen…</span>
+            <div class="mock-send">
+              <svg width="12" height="12" fill="none" viewBox="0 0 12 12"><path d="M1 6h10M7 2l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOGOS ── -->
+<div class="logos">
+  <div class="container">
+    <p class="logos-label" id="logos-label">Von L&amp;D-Teams in ganz Deutschland und Österreich genutzt</p>
+    <div class="logos-row">
+      <span class="logo-item">Musterbank AG</span>
+      <span class="logo-item">Heindl Group</span>
+      <span class="logo-item">Meridian GmbH</span>
+      <span class="logo-item">Volkhard &amp; Partner</span>
+      <span class="logo-item">Nordstahl SE</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── STATS ── -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-n"><b>200</b>+</div>
+        <div class="stat-l" id="s1">Trainingsszenarien</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-n"><b>94</b>%</div>
+        <div class="stat-l" id="s2">Nutzerzufriedenheit</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-n">&lt;<b>15</b></div>
+        <div class="stat-l" id="s3">Min. bis zum Start</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-n"><b>EU</b></div>
+        <div class="stat-l" id="s4">gehostet · DSGVO-konform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-head-center reveal">
+      <div class="section-label" id="pl-label">Das Problem</div>
+      <h2 id="pl-h2">Führen kostet Überwindung.<br>Üben kostet Zeit.</h2>
+      <p class="section-sub" id="pl-sub">Klassisches Training gibt Wissen — aber kein Gespür. In realen Situationen bleibt keine Zeit zum Ausprobieren.</p>
+    </div>
+    <div class="problem-cards">
+      <div class="problem-card reveal">
+        <div class="problem-card-icon">📚</div>
+        <h3 id="pc1-h">Theorie genügt nicht</h3>
+        <p id="pc1-p">E-Learnings und Workshops vermitteln Modelle, aber kein Gespür für echte Eskalation. Der Transfereffekt ist messbar gering.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-card-icon">🎭</div>
+        <h3 id="pc2-h">Rollenspiele fehlt der Spiegel</h3>
+        <p id="pc2-p">Übungen mit Kollegen sind wertvoll, aber unangenehm. Strukturiertes Feedback fehlt fast immer. Lerneffekte sind zufällig.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-card-icon">⚠️</div>
+        <h3 id="pc3-h">Fehler kosten echte Beziehungen</h3>
+        <p id="pc3-p">In der realen Situation gibt es keine Pause, kein Neustart. Ein schlecht geführtes Gespräch kann Vertrauen dauerhaft beschädigen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head-center reveal">
+      <div class="section-label" id="how-label">So funktioniert PRAXA</div>
+      <h2 id="how-h2">Drei Schritte zum besseren Gespräch.</h2>
+      <p class="section-sub" id="how-sub">Von der Einrichtung bis zum ersten Feedback in unter 15 Minuten.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="step-num">01</div>
+        <h3 id="hw1-h">Szenario wählen</h3>
+        <p id="hw1-p">Wählen Sie aus 200+ vorgefertigten Szenarien oder laden Sie eigene Unternehmensrichtlinien hoch. PRAXA kalibriert sich auf Ihre Sprache und Kultur.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">02</div>
+        <h3 id="hw2-h">Gespräch führen</h3>
+        <p id="hw2-p">Üben Sie per Sprache oder Text. Der KI-Partner reagiert realistisch, stellt Rückfragen und eskaliert wenn nötig — genau wie ein echter Gesprächspartner.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="step-num">03</div>
+        <h3 id="hw3-h">Feedback erhalten</h3>
+        <p id="hw3-p">Nach jeder Einheit analysiert PRAXA Ihr Gespräch und gibt strukturiertes Feedback zu Gesprächsführung, Sprache, Empathie und Zielerreichung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head-center reveal">
+      <div class="section-label" id="feat-label">Funktionen</div>
+      <h2 id="feat-h2">Alles, was Ihr L&amp;D-Team braucht.</h2>
+      <p class="section-sub" id="feat-sub">PRAXA Skills ist keine Lernplattform. Es ist ein Trainingsraum — gebaut für echte Anwendung.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="22" height="22" fill="none" viewBox="0 0 22 22"><path d="M3 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="#2563EB" stroke-width="1.5"/><path d="M7 9h8M7 13h5" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 id="f1-h">Eigene Inhalte integrieren</h3>
+        <p id="f1-p">Laden Sie Betriebsvereinbarungen, Feedbackleitfäden oder Kommunikationsstandards hoch. PRAXA trainiert auf Ihren Dokumenten und spiegelt Ihre Unternehmenskultur wider.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="22" height="22" fill="none" viewBox="0 0 22 22"><circle cx="11" cy="11" r="8" stroke="#2563EB" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 id="f2-h">Reale Gesprächssimulation</h3>
+        <p id="f2-p">Sprache und Text in über 20 Szenarien: Jahresgespräch, Kündigung, Konfliktgespräch, Leistungsdruck, Teambesprechungen. Der KI-Partner ist so unangenehm realistisch wie nötig.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="22" height="22" fill="none" viewBox="0 0 22 22"><path d="M4 17l4-4 3 3 4-5 4 6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 id="f3-h">Messbares Feedback</h3>
+        <p id="f3-p">Nach jeder Einheit: Auswertung nach Gesprächsphasen, Sprache, Empathie und Zielerreichung. Lernfortschritt wird sichtbar gemacht — für Lernende und Manager.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">
+          <svg width="22" height="22" fill="none" viewBox="0 0 22 22"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#2563EB" stroke-width="1.5"/><rect x="12" y="3" width="7" height="7" rx="1.5" stroke="#2563EB" stroke-width="1.5"/><rect x="3" y="12" width="7" height="7" rx="1.5" stroke="#2563EB" stroke-width="1.5"/><rect x="12" y="12" width="7" height="7" rx="1.5" stroke="#2563EB" stroke-width="1.5"/></svg>
+        </div>
+        <h3 id="f4-h">Manager-Dashboard &amp; Reporting</h3>
+        <p id="f4-p">Überblick über Trainingsaktivität, Fortschritt und Schwächen im Team. Export-Berichte für HR-Reviews. LMS-Integration auf Anfrage verfügbar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head-center reveal">
+      <div class="section-label">Kundenstimmen</div>
+      <h2 id="test-h2">Was Teams über PRAXA sagen.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="t-quote" id="tq1">Mit PRAXA Skills konnten wir unsere Führungskräfte-Schulungen erstmals skalieren, ohne Qualität einzubüßen. 60 Führungskräfte — alle auf demselben Stand, ohne eine einzige Präsenzsession.</p>
+        <div class="t-author">
+          <div class="t-av">SK</div>
+          <div>
+            <div class="t-name">Sarah K.</div>
+            <div class="t-role">Head of L&amp;D · Mittelständisches Industrieunternehmen, 600 MA</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p class="t-quote" id="tq2">Der Unterschied zu klassischen E-Learnings: Die KI-Partner sind unangenehm realistisch. Genau das wollten wir. Unsere Führungskräfte gehen seither deutlich besser vorbereitet in schwierige Gespräche.</p>
+        <div class="t-author">
+          <div class="t-av">MH</div>
+          <div>
+            <div class="t-name">Marcus H.</div>
+            <div class="t-role">HR Director · Maschinenbaukonzern, 2.400 MA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head-center reveal">
+      <div class="section-label" id="pr-label">Preise</div>
+      <h2 id="pr-h2">Transparent. Skalierbar. Auf Anfrage.</h2>
+      <p class="section-sub" id="pr-sub">Alle Pakete EU-gehostet, DSGVO-konform, inkl. Onboarding.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan reveal">
+        <div class="plan-name" id="pn1">Starter</div>
+        <div class="plan-for" id="pf1">Kleine Teams bis 25 Lernende</div>
+        <div class="plan-price" id="pp1">Preis auf Anfrage</div>
+        <ul class="plan-items">
+          <li id="pi1-1">200+ Szenarien</li>
+          <li id="pi1-2">Sprach- &amp; Textübungen</li>
+          <li id="pi1-3">Personalisiertes Feedback</li>
+          <li id="pi1-4">Manager-Dashboard</li>
+          <li id="pi1-5">E-Mail-Support</li>
+        </ul>
+        <a href="mailto:hello@praxa.de" class="plan-btn" id="pb1">Anfragen</a>
+      </div>
+      <div class="plan featured reveal">
+        <div class="plan-badge" id="pb-badge">Beliebteste Wahl</div>
+        <div class="plan-name" id="pn2">Professional</div>
+        <div class="plan-for" id="pf2">L&amp;D-Teams bis 250 Lernende</div>
+        <div class="plan-price" id="pp2">Preis auf Anfrage</div>
+        <ul class="plan-items">
+          <li id="pi2-1">Alles aus Starter</li>
+          <li id="pi2-2">Eigene Richtlinien hochladen</li>
+          <li id="pi2-3">Team-Reporting &amp; Analytics</li>
+          <li id="pi2-4">LMS-Integration</li>
+          <li id="pi2-5">Dedizierter Onboarding-Call</li>
+        </ul>
+        <a href="mailto:hello@praxa.de" class="plan-btn" id="pb2">Anfragen</a>
+      </div>
+      <div class="plan reveal">
+        <div class="plan-name" id="pn3">Enterprise</div>
+        <div class="plan-for" id="pf3">Große Organisationen &amp; Verbände</div>
+        <div class="plan-price" id="pp3">Individuelles Angebot</div>
+        <ul class="plan-items">
+          <li id="pi3-1">Alles aus Professional</li>
+          <li id="pi3-2">White-Label</li>
+          <li id="pi3-3">API-Zugang</li>
+          <li id="pi3-4">SLA &amp; dedizierter Support</li>
+          <li id="pi3-5">Custom Szenarien</li>
+        </ul>
+        <a href="mailto:hello@praxa.de" class="plan-btn" id="pb3">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="container">
+    <div class="section-head-center reveal">
+      <div class="section-label">FAQ</div>
+      <h2 id="faq-h2">Häufige Fragen</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span id="fq1">Wie werden unsere Unternehmensdaten geschützt?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" id="fa1">PRAXA Skills wird ausschließlich auf EU-Servern betrieben (Deutschland). Alle Gespräche sind Ende-zu-Ende-verschlüsselt und werden nicht für das Training unserer Modelle verwendet. Wir schließen mit allen Kunden einen Auftragsverarbeitungsvertrag (AVV) nach DSGVO ab. Auf Wunsch ist auch ein dedizierter Mandant verfügbar.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span id="fq2">In welchen Sprachen ist PRAXA verfügbar?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" id="fa2">Aktuell unterstützt PRAXA Skills Deutsch und Englisch vollständig. Österreichisches Deutsch und Schweizer Hochdeutsch werden als Varianten angeboten. Weitere Sprachen (Französisch, Spanisch, Niederländisch) sind in Entwicklung.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span id="fq3">Wie lange dauert die Einrichtung?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" id="fa3">Mit unseren Standardszenarien sind Sie in unter 15 Minuten startklar. Möchten Sie eigene Inhalte integrieren, rechnen Sie mit 1–2 Werktagen für den Upload und die Kalibrierung. Wir begleiten Sie dabei mit einem dedizierten Onboarding-Call.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span id="fq4">Kann PRAXA mit unserem bestehenden LMS verbunden werden?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" id="fa4">Ja. PRAXA Skills unterstützt SCORM 1.2/2004 für gängige LMS-Systeme sowie native Integrationen für SAP SuccessFactors, Cornerstone und Moodle. Eine REST-API steht im Enterprise-Paket zur Verfügung.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <div class="container">
+    <h2 id="cta-h2">Bereit für das erste Übungsgespräch?</h2>
+    <p id="cta-p">Buchen Sie eine kostenlose 30-Minuten-Demo — ohne Commitment, sofort verfügbar.</p>
+    <a href="mailto:hello@praxa.de" class="btn btn-primary btn-lg" id="cta-btn">Demo buchen →</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">PRAXA<em style="color:var(--blue);font-style:normal">.</em></a>
+        <p>KI-Gesprächstraining für Führungskräfte und L&amp;D-Teams. EU-gehostet, DSGVO-konform, EU AI Act Art. 6 konform.</p>
+      </div>
+      <div class="footer-col">
+        <h4 id="fc1-h">Produkt</h4>
+        <ul>
+          <li><a href="#features" id="fc1-1">Funktionen</a></li>
+          <li><a href="#how" id="fc1-2">So funktioniert's</a></li>
+          <li><a href="#pricing" id="fc1-3">Preise</a></li>
+          <li><a href="#" id="fc1-4">Integrationen</a></li>
+          <li><a href="#" id="fc1-5">Security</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 id="fc2-h">Unternehmen</h4>
+        <ul>
+          <li><a href="#" id="fc2-1">Über uns</a></li>
+          <li><a href="#" id="fc2-2">Blog</a></li>
+          <li><a href="#" id="fc2-3">Karriere</a></li>
+          <li><a href="mailto:hello@praxa.de">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 id="fc3-h">Rechtliches</h4>
+        <ul>
+          <li><a href="#" id="fc3-1">Datenschutz</a></li>
+          <li><a href="#" id="fc3-2">Impressum</a></li>
+          <li><a href="#" id="fc3-3">AGB</a></li>
+          <li><a href="#" id="fc3-4">Cookie-Einstellungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" id="footer-copy">© 2026 PRAXA Skills GmbH · Made in Bavaria</p>
+      <div class="footer-badges">
+        <span class="footer-badge">EU-gehostet</span>
+        <span class="footer-badge">DSGVO</span>
+        <span class="footer-badge">EU AI Act Art. 6</span>
+        <span class="footer-badge">ISO 27001</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Nav scroll effect
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+// ── Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+// ── Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── FAQ accordion
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── Lang toggle
+const LANG = {
+  de: {
+    'lang-btn':'EN','nav-cta':'Demo buchen','mobile-cta':'Demo buchen →',
+    'badge-text':'KI-Gesprächstraining · EU-gehostet · DSGVO-konform',
+    'hero-h1':'Üben Sie das schwierige Gespräch — <em>bevor es zählt.</em>',
+    'hero-p':'PRAXA Skills gibt Führungskräften und L&D-Teams einen KI-Gesprächspartner, der auf Ihren eigenen Unternehmensrichtlinien trainiert wurde. Reale Szenarien. Strukturiertes Feedback. Keine Konsequenzen beim Lernen.',
+    'hero-cta1':'Kostenlose Demo buchen →','hero-cta2':'Wie es funktioniert',
+    't1':'30 Min · Kostenlos','t2':'Kein Commitment','t3':'Sofort startklar',
+    'logos-label':'Von L&D-Teams in ganz Deutschland und Österreich genutzt',
+    's1':'Trainingsszenarien','s2':'Nutzerzufriedenheit','s3':'Min. bis zum Start','s4':'gehostet · DSGVO-konform',
+    'pl-label':'Das Problem','pl-h2':'Führen kostet Überwindung.<br>Üben kostet Zeit.',
+    'pl-sub':'Klassisches Training gibt Wissen — aber kein Gespür. In realen Situationen bleibt keine Zeit zum Ausprobieren.',
+    'pc1-h':'Theorie genügt nicht','pc1-p':'E-Learnings und Workshops vermitteln Modelle, aber kein Gespür für echte Eskalation. Der Transfereffekt ist messbar gering.',
+    'pc2-h':'Rollenspiele fehlt der Spiegel','pc2-p':'Übungen mit Kollegen sind wertvoll, aber unangenehm. Strukturiertes Feedback fehlt fast immer. Lerneffekte sind zufällig.',
+    'pc3-h':'Fehler kosten echte Beziehungen','pc3-p':'In der realen Situation gibt es keine Pause, kein Neustart. Ein schlecht geführtes Gespräch kann Vertrauen dauerhaft beschädigen.',
+    'how-label':'So funktioniert PRAXA','how-h2':'Drei Schritte zum besseren Gespräch.',
+    'how-sub':'Von der Einrichtung bis zum ersten Feedback in unter 15 Minuten.',
+    'hw1-h':'Szenario wählen','hw1-p':'Wählen Sie aus 200+ vorgefertigten Szenarien oder laden Sie eigene Unternehmensrichtlinien hoch. PRAXA kalibriert sich auf Ihre Sprache und Kultur.',
+    'hw2-h':'Gespräch führen','hw2-p':'Üben Sie per Sprache oder Text. Der KI-Partner reagiert realistisch, stellt Rückfragen und eskaliert wenn nötig — genau wie ein echter Gesprächspartner.',
+    'hw3-h':'Feedback erhalten','hw3-p':'Nach jeder Einheit analysiert PRAXA Ihr Gespräch und gibt strukturiertes Feedback zu Gesprächsführung, Sprache, Empathie und Zielerreichung.',
+    'feat-label':'Funktionen','feat-h2':'Alles, was Ihr L&D-Team braucht.',
+    'feat-sub':'PRAXA Skills ist keine Lernplattform. Es ist ein Trainingsraum — gebaut für echte Anwendung.',
+    'f1-h':'Eigene Inhalte integrieren','f1-p':'Laden Sie Betriebsvereinbarungen, Feedbackleitfäden oder Kommunikationsstandards hoch. PRAXA trainiert auf Ihren Dokumenten und spiegelt Ihre Unternehmenskultur wider.',
+    'f2-h':'Reale Gesprächssimulation','f2-p':'Sprache und Text in über 20 Szenarien: Jahresgespräch, Kündigung, Konfliktgespräch, Leistungsdruck, Teambesprechungen. Der KI-Partner ist so unangenehm realistisch wie nötig.',
+    'f3-h':'Messbares Feedback','f3-p':'Nach jeder Einheit: Auswertung nach Gesprächsphasen, Sprache, Empathie und Zielerreichung. Lernfortschritt wird sichtbar gemacht — für Lernende und Manager.',
+    'f4-h':'Manager-Dashboard &amp; Reporting','f4-p':'Überblick über Trainingsaktivität, Fortschritt und Schwächen im Team. Export-Berichte für HR-Reviews. LMS-Integration auf Anfrage verfügbar.',
+    'test-h2':'Was Teams über PRAXA sagen.',
+    'tq1':'Mit PRAXA Skills konnten wir unsere Führungskräfte-Schulungen erstmals skalieren, ohne Qualität einzubüßen. 60 Führungskräfte — alle auf demselben Stand, ohne eine einzige Präsenzsession.',
+    'tq2':'Der Unterschied zu klassischen E-Learnings: Die KI-Partner sind unangenehm realistisch. Genau das wollten wir. Unsere Führungskräfte gehen seither deutlich besser vorbereitet in schwierige Gespräche.',
+    'pr-label':'Preise','pr-h2':'Transparent. Skalierbar. Auf Anfrage.',
+    'pr-sub':'Alle Pakete EU-gehostet, DSGVO-konform, inkl. Onboarding.',
+    'pn1':'Starter','pf1':'Kleine Teams bis 25 Lernende','pp1':'Preis auf Anfrage',
+    'pi1-1':'200+ Szenarien','pi1-2':'Sprach- &amp; Textübungen','pi1-3':'Personalisiertes Feedback','pi1-4':'Manager-Dashboard','pi1-5':'E-Mail-Support','pb1':'Anfragen',
+    'pb-badge':'Beliebteste Wahl',
+    'pn2':'Professional','pf2':'L&D-Teams bis 250 Lernende','pp2':'Preis auf Anfrage',
+    'pi2-1':'Alles aus Starter','pi2-2':'Eigene Richtlinien hochladen','pi2-3':'Team-Reporting &amp; Analytics','pi2-4':'LMS-Integration','pi2-5':'Dedizierter Onboarding-Call','pb2':'Anfragen',
+    'pn3':'Enterprise','pf3':'Große Organisationen &amp; Verbände','pp3':'Individuelles Angebot',
+    'pi3-1':'Alles aus Professional','pi3-2':'White-Label','pi3-3':'API-Zugang','pi3-4':'SLA &amp; dedizierter Support','pi3-5':'Custom Szenarien','pb3':'Kontakt aufnehmen',
+    'faq-h2':'Häufige Fragen',
+    'fq1':'Wie werden unsere Unternehmensdaten geschützt?','fa1':'PRAXA Skills wird ausschließlich auf EU-Servern betrieben (Deutschland). Alle Gespräche sind Ende-zu-Ende-verschlüsselt und werden nicht für das Training unserer Modelle verwendet. Wir schließen mit allen Kunden einen Auftragsverarbeitungsvertrag (AVV) nach DSGVO ab. Auf Wunsch ist auch ein dedizierter Mandant verfügbar.',
+    'fq2':'In welchen Sprachen ist PRAXA verfügbar?','fa2':'Aktuell unterstützt PRAXA Skills Deutsch und Englisch vollständig. Österreichisches Deutsch und Schweizer Hochdeutsch werden als Varianten angeboten. Weitere Sprachen (Französisch, Spanisch, Niederländisch) sind in Entwicklung.',
+    'fq3':'Wie lange dauert die Einrichtung?','fa3':'Mit unseren Standardszenarien sind Sie in unter 15 Minuten startklar. Möchten Sie eigene Inhalte integrieren, rechnen Sie mit 1–2 Werktagen für den Upload und die Kalibrierung. Wir begleiten Sie dabei mit einem dedizierten Onboarding-Call.',
+    'fq4':'Kann PRAXA mit unserem bestehenden LMS verbunden werden?','fa4':'Ja. PRAXA Skills unterstützt SCORM 1.2/2004 für gängige LMS-Systeme sowie native Integrationen für SAP SuccessFactors, Cornerstone und Moodle. Eine REST-API steht im Enterprise-Paket zur Verfügung.',
+    'cta-h2':'Bereit für das erste Übungsgespräch?',
+    'cta-p':'Buchen Sie eine kostenlose 30-Minuten-Demo — ohne Commitment, sofort verfügbar.',
+    'cta-btn':'Demo buchen →',
+    'fc1-h':'Produkt','fc1-1':'Funktionen','fc1-2':"So funktioniert's",'fc1-3':'Preise','fc1-4':'Integrationen','fc1-5':'Security',
+    'fc2-h':'Unternehmen','fc2-1':'Über uns','fc2-2':'Blog','fc2-3':'Karriere',
+    'fc3-h':'Rechtliches','fc3-1':'Datenschutz','fc3-2':'Impressum','fc3-3':'AGB','fc3-4':'Cookie-Einstellungen',
+    'footer-copy':'© 2026 PRAXA Skills GmbH · Made in Bavaria',
+  },
+  en: {
+    'lang-btn':'DE','nav-cta':'Book demo','mobile-cta':'Book demo →',
+    'badge-text':'AI Conversation Training · EU-hosted · GDPR-compliant',
+    'hero-h1':'Practice the difficult conversation — <em>before it counts.</em>',
+    'hero-p':'PRAXA Skills gives leaders and L&D teams an AI conversation partner trained on your own company policies. Real scenarios. Structured feedback. No consequences while learning.',
+    'hero-cta1':'Book a free demo →','hero-cta2':'How it works',
+    't1':'30 min · Free','t2':'No commitment','t3':'Ready immediately',
+    'logos-label':'Used by L&D teams across Germany and Austria',
+    's1':'Training scenarios','s2':'User satisfaction','s3':'Min. to get started','s4':'EU-hosted · GDPR-compliant',
+    'pl-label':'The Problem','pl-h2':'Leadership takes courage.<br>Practice takes time.',
+    'pl-sub':'Traditional training delivers knowledge — but not instinct. In real situations, there is no time to experiment.',
+    'pc1-h':'Theory is not enough','pc1-p':'E-learnings and workshops teach models, but not a feel for real escalation. The transfer effect is measurably low.',
+    'pc2-h':'Role plays lack a mirror','pc2-p':'Exercises with colleagues are valuable but uncomfortable. Structured feedback is almost always missing. Learning outcomes are random.',
+    'pc3-h':'Mistakes cost real relationships','pc3-p':'In a real conversation there is no pause, no restart. A poorly handled conversation can permanently damage trust.',
+    'how-label':'How PRAXA works','how-h2':'Three steps to better conversations.',
+    'how-sub':'From setup to first feedback in under 15 minutes.',
+    'hw1-h':'Choose a scenario','hw1-p':'Select from 200+ pre-built scenarios or upload your own company policies. PRAXA calibrates to your language and culture.',
+    'hw2-h':'Have the conversation','hw2-p':'Practice via voice or text. The AI partner responds realistically, asks follow-up questions, and escalates when needed — just like a real counterpart.',
+    'hw3-h':'Receive feedback','hw3-p':'After each session PRAXA analyzes your conversation and gives structured feedback on conversation flow, language, empathy and goal achievement.',
+    'feat-label':'Features','feat-h2':'Everything your L&D team needs.',
+    'feat-sub':'PRAXA Skills is not a learning platform. It is a training room — built for real application.',
+    'f1-h':'Integrate your own content','f1-p':'Upload works agreements, feedback guidelines or communication standards. PRAXA trains on your documents and reflects your company culture.',
+    'f2-h':'Real conversation simulation','f2-p':'Voice and text in 20+ scenarios: annual review, termination, conflict talk, performance pressure, team meetings. The AI partner is as uncomfortably realistic as needed.',
+    'f3-h':'Measurable feedback','f3-p':'After each session: analysis by conversation phase, language, empathy and goal achievement. Learning progress becomes visible — for learners and managers.',
+    'f4-h':'Manager dashboard &amp; reporting','f4-p':'Overview of training activity, progress and team weaknesses. Export reports for HR reviews. LMS integration available on request.',
+    'test-h2':'What teams say about PRAXA.',
+    'tq1':'With PRAXA Skills we were able to scale our leadership training for the first time without sacrificing quality. 60 leaders — all on the same level, without a single in-person session.',
+    'tq2':'The difference from classic e-learnings: the AI partners are uncomfortably realistic. Exactly what we wanted. Our leaders go into difficult conversations much better prepared now.',
+    'pr-label':'Pricing','pr-h2':'Transparent. Scalable. On request.',
+    'pr-sub':'All plans EU-hosted, GDPR-compliant, including onboarding.',
+    'pn1':'Starter','pf1':'Small teams up to 25 learners','pp1':'Price on request',
+    'pi1-1':'200+ scenarios','pi1-2':'Voice &amp; text practice','pi1-3':'Personalized feedback','pi1-4':'Manager dashboard','pi1-5':'Email support','pb1':'Request',
+    'pb-badge':'Most popular',
+    'pn2':'Professional','pf2':'L&D teams up to 250 learners','pp2':'Price on request',
+    'pi2-1':'Everything in Starter','pi2-2':'Upload custom policies','pi2-3':'Team reporting &amp; analytics','pi2-4':'LMS integration','pi2-5':'Dedicated onboarding call','pb2':'Request',
+    'pn3':'Enterprise','pf3':'Large organizations &amp; associations','pp3':'Custom quote',
+    'pi3-1':'Everything in Professional','pi3-2':'White-label','pi3-3':'API access','pi3-4':'SLA &amp; dedicated support','pi3-5':'Custom scenarios','pb3':'Get in touch',
+    'faq-h2':'Frequently asked questions',
+    'fq1':'How is our company data protected?','fa1':'PRAXA Skills runs exclusively on EU servers (Germany). All conversations are end-to-end encrypted and are not used to train our models. We sign a data processing agreement (DPA) under GDPR with all customers. A dedicated tenant is available on request.',
+    'fq2':'What languages does PRAXA support?','fa2':'PRAXA Skills currently fully supports German and English. Austrian German and Swiss Standard German are offered as variants. Further languages (French, Spanish, Dutch) are in development.',
+    'fq3':'How long does setup take?','fa3':'With our standard scenarios you are ready in under 15 minutes. If you want to integrate your own content, allow 1–2 business days for upload and calibration. We guide you through it with a dedicated onboarding call.',
+    'fq4':'Can PRAXA connect to our existing LMS?','fa4':'Yes. PRAXA Skills supports SCORM 1.2/2004 for common LMS systems as well as native integrations for SAP SuccessFactors, Cornerstone and Moodle. A REST API is available in the Enterprise plan.',
+    'cta-h2':'Ready for your first practice conversation?',
+    'cta-p':'Book a free 30-minute demo — no commitment, available immediately.',
+    'cta-btn':'Book demo →',
+    'fc1-h':'Product','fc1-1':'Features','fc1-2':'How it works','fc1-3':'Pricing','fc1-4':'Integrations','fc1-5':'Security',
+    'fc2-h':'Company','fc2-1':'About','fc2-2':'Blog','fc2-3':'Careers',
+    'fc3-h':'Legal','fc3-1':'Privacy','fc3-2':'Imprint','fc3-3':'Terms','fc3-4':'Cookie settings',
+    'footer-copy':'© 2026 PRAXA Skills GmbH · Made in Bavaria',
+  }
+};
+
+let lang = localStorage.getItem('praxa-lang') || 'de';
+
+function applyLang(l) {
+  document.documentElement.lang = l;
+  Object.keys(LANG[l]).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = LANG[l][id];
+  });
+}
+
+function toggleLang() {
+  lang = lang === 'de' ? 'en' : 'de';
+  localStorage.setItem('praxa-lang', lang);
+  applyLang(lang);
+}
+
+if (lang !== 'de') applyLang(lang);
+</script>
+</body>
+</html>
